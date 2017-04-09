@@ -1,8 +1,15 @@
-package com.mralonso.trainingapp
+package com.mralonso.trainingapp.view.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.mralonso.trainingapp.R
+import com.mralonso.trainingapp.model.getItems
+import com.mralonso.trainingapp.utils.loadUrl
 import kotlinx.android.synthetic.main.activity_detail.*
+
+/**
+ * Created by miguel.rodriguez on 7/4/17.
+ */
 
 class DetailActivity : AppCompatActivity() {
 

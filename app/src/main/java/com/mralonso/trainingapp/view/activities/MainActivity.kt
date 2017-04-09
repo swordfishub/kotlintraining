@@ -1,10 +1,18 @@
-package com.mralonso.trainingapp
+package com.mralonso.trainingapp.view.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import com.mralonso.trainingapp.R
+import com.mralonso.trainingapp.model.getItems
+import com.mralonso.trainingapp.view.activities.DetailActivity
+import com.mralonso.trainingapp.view.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+
+/**
+ * Created by miguel.rodriguez on 7/4/17.
+ */
 
 class MainActivity : AppCompatActivity() {
 
