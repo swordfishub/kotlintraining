@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.mralonso.trainingapp.R
 import com.mralonso.trainingapp.model.Item
+import com.mralonso.trainingapp.navigation.Navigator
 import com.mralonso.trainingapp.presenter.DetailPresenter
 import com.mralonso.trainingapp.utils.loadUrl
 import com.mralonso.trainingapp.view.viewInterfaces.DetailView
@@ -16,10 +17,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 class DetailActivity : AppCompatActivity(), DetailView {
 
     val presenter: DetailPresenter = DetailPresenter(this)
-
-    companion object {
-        val EXTRA_ID = "DetailActivity:id"
-    }
+    val navigator: Navigator = Navigator(this)
 
     //region AppCompatActivity
 
@@ -27,14 +25,14 @@ class DetailActivity : AppCompatActivity(), DetailView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        presenter.startShowing(intent)
+        presenter.startShowingWithId(navigator.obtainDetailId(intent))
     }
 
     //endregion AppCompatActivity
 
     //region DetailView
 
-    override fun showItemDetail(item: Item) {
+    override fun showItemDetail(item: Item?) {
         if(item!=null){
             item_image.loadUrl(item.url)
             item_title.text = item.title

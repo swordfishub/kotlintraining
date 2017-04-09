@@ -7,5 +7,5 @@ import com.mralonso.trainingapp.model.Item
  */
 interface DetailView {
 
-    fun showItemDetail(item: Item)
+    fun showItemDetail(item: Item?)
 }

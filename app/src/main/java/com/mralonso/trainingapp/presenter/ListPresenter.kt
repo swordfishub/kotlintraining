@@ -12,6 +12,6 @@ class ListPresenter(val view: ListView) {
     }
 
     fun itemSelected(id: Long){
-        view.goToDetail(id)
+        view.showItemDetail(id)
     }
 }

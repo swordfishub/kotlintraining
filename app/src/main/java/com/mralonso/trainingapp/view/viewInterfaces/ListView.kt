@@ -6,5 +6,5 @@ package com.mralonso.trainingapp.view.viewInterfaces
 interface ListView {
 
     fun showItems()
-    fun goToDetail(id: Long)
+    fun showItemDetail(id: Long)
 }
