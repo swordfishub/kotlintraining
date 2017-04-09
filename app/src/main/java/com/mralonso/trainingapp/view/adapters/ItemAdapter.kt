@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.view_item.view.*
  * Created by miguel.rodriguez on 7/4/17.
  */
 
-class ItemAdapter(val items: List<Item>, val listener: (Item) -> Unit) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
+class ItemAdapter(val items: MutableList<Item> = mutableListOf<Item>(), val listener: (Item) -> Unit) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(parent.inflate(R.layout.view_item))
@@ -24,6 +24,11 @@ class ItemAdapter(val items: List<Item>, val listener: (Item) -> Unit) : Recycle
         item_title.text = item.title;
         item_image.loadUrl(item.url)
         setOnClickListener { listener(item) }
+    }
+
+    fun addItems(newItems: List<Item>) {
+        items.addAll(newItems)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = items.size
