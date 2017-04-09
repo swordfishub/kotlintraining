@@ -6,19 +6,24 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import com.mralonso.trainingapp.R
 import com.mralonso.trainingapp.model.getItems
-import com.mralonso.trainingapp.presenter.MainPresenter
+import com.mralonso.trainingapp.presenter.ListPresenter
 import com.mralonso.trainingapp.view.activities.DetailActivity
 import com.mralonso.trainingapp.view.adapters.ItemAdapter
-import com.mralonso.trainingapp.view.viewInterfaces.MainView
+import com.mralonso.trainingapp.view.viewInterfaces.ListView
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by miguel.rodriguez on 7/4/17.
  */
 
-class MainActivity : AppCompatActivity(), MainView {
+class ListActivity : AppCompatActivity(), ListView {
 
-    val presenter: MainPresenter = MainPresenter(this)
+    val presenter: ListPresenter = ListPresenter(this)
+
+    private fun init() {
+        list.layoutManager = GridLayoutManager(this, 2)
+        list.adapter = ItemAdapter { (id) -> presenter.itemSelected(id) }
+    }
 
     //region AppCompatActivity
 
@@ -31,14 +36,9 @@ class MainActivity : AppCompatActivity(), MainView {
         presenter.startShowing()
     }
 
-    private fun init() {
-        list.layoutManager = GridLayoutManager(this, 2)
-        list.adapter = ItemAdapter { (id) -> presenter.itemSelected(id) }
-    }
-
     //endregion AppCompatActivity
 
-    //region MainView
+    //region ListView
 
     override fun goToDetail(id: Long) {
         val intent = Intent(this, DetailActivity::class.java)
@@ -52,5 +52,5 @@ class MainActivity : AppCompatActivity(), MainView {
         }
     }
 
-    //endregion MainView
+    //endregion ListView
 }

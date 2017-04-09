@@ -1,11 +1,11 @@
 package com.mralonso.trainingapp.presenter
 
-import com.mralonso.trainingapp.view.viewInterfaces.MainView
+import com.mralonso.trainingapp.view.viewInterfaces.ListView
 
 /**
  * Created by miguel on 9/4/17.
  */
-class MainPresenter(val view: MainView) {
+class ListPresenter(val view: ListView) {
 
     fun startShowing(){
         view.showItems()
